@@ -30,11 +30,11 @@ def predict():
     feature2 = int(request.form.get('ITEMID'))
     query = data.loc[(data['shop_id']==feature1)&(data['item_id']==feature2)]
     if query.empty:
-        return render_template('index.html', prediction_text='Please enter valid SHOP ID and ITEM ID. Shop ID :{}/Item ID:{} not found.'.format(feature1,feature2))
+        return render_template('index.html', prediction_text='Please enter valid SHOP ID and ITEM ID.'.format(feature1,feature2))
     else:
         #query=query.drop(['ID','shop_id','item_id'],axis=1)
-        query = query[query["date_block_num"] > 2]
-        query = query[query["date_block_num"] < 33]
+        #query = query[query["date_block_num"] > 2]
+        #query = query[query["date_block_num"] < 33]
         
         prediction = model.predict(query)
         output = round(prediction[0].clip(0,20))
