@@ -7,3 +7,5 @@ Werkzeug>=2.0
 numpy>=1.11.0
 matplotlib>=1.4.3
 pandas>=0.19
+xgboost
+pickle
