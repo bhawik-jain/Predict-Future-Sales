@@ -9,10 +9,10 @@ app = Flask(__name__)
 
 with open('XGBR_pkl', 'rb') as files:
     model = pickle.load(files)
+data = pickle.load(open('files/data_for_model.gzip', 'rb'))
 
-with gzip.open('data_for_model.pkl.gz', 'rb') as files:
-    data = pickle.load(files)
-
+#with gzip.open('data_for_model.pkl.gz', 'rb') as files:
+#    data = pickle.load(files)
 #data = pickle.load(open('data_for_model.7z', 'rb'))
 #data = pd.read_pickle('data_for_model.7z')
 
@@ -25,6 +25,7 @@ def predict():
     '''
     For rendering results on HTML GUI
     '''
+    
     feature1 = int(request.form.get("SHOPID"))
     feature2 = int(request.form.get('ITEMID'))
     query = data.loc[(data['shop_id']==feature1)&(data['item_id']==feature2)]
@@ -36,7 +37,6 @@ def predict():
         query = query[query["date_block_num"] < 33]
         
         prediction = model.predict(query)
-
         output = round(prediction[0].clip(0,20))
 
         return render_template('index.html', prediction_text='Predicted total sales for next month for SHOP ID :{} and ITEM ID :{} is {}'.format(f1,f2,output))
