@@ -8,3 +8,4 @@ numpy>=1.11.0
 matplotlib>=1.4.3
 pandas>=0.19
 xgboost==0.90
+gzip
