@@ -22,8 +22,8 @@ a{
 
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
-    	Please enter SHOP ID<input type="text" name="SHOPID" placeholder="Example : 30" required="required" /></br>
-      Please enter ITEM ID<input type="text" name="ITEMID" placeholder="Example : 5" required="required" /><br>
+    	Please enter SHOP ID<input type="text" name="SHOPID" placeholder="Example : 5" required="required" /></br>
+      Please enter ITEM ID<input type="text" name="ITEMID" placeholder="Example : 5037" required="required" /><br>
 		
 
         <button type="submit" class="btn btn-primary btn-block btn-large">PREDICT</button>
@@ -31,7 +31,7 @@ a{
 
    <br>
    <br><h4>
-   <a href="static/load_file.html" target="_blank" color="red">Click here to know every SHOP ID and ITEM ID</a>
+   <a href="https://www.kaggle.com/competitions/competitive-data-science-predict-future-sales/data?select=test.csv" target="_blank" color="red">Click here to know every SHOP ID and ITEM ID</a>
    <br>
    <br>
    {{ prediction_text }}
